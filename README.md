@@ -2,21 +2,22 @@
 
 **CSCI 121 · one week · about 9 to 10 hours of work**
 
-This week you build one whole program, from an empty folder to a finished game that runs.
-No template. No starter code. You make the project yourself, the way you would at a job.
+This week you build one whole program, start to finish: a coffee shop game. You get a
+`coffeeshop` package with an empty file for each class and a `main` that already runs. You fill
+in every class yourself, one step at a time, until the game works.
 
-You turn in **two things**:
+Everything is in **your fork of this repo**. There are two parts:
 
 | # | What | Where it lives |
 |---|---|---|
-| 1 | **The Coffee Shop project.** A brand-new project you create on Monday. | A new repo on **your own** GitHub account, named `coffee-shop` |
-| 2 | **The Challenges.** 14 short logic problems, like the Challenge sections in the Follow-Along. | Your **fork** of this repo |
+| 1 | **The Coffee Shop.** 7 classes, built in 7 steps. | `src/main/java/coffeeshop/` |
+| 2 | **The Challenges.** 14 short logic problems, like the Challenge sections in the Follow-Along. | `src/main/java/challenges/` |
 
 ## 📅 Dates
 
 | When | What |
 |---|---|
-| **Mon Nov 16, in class** | Part 1: make the new project and put it on GitHub. You leave class with it pushed. |
+| **Mon Nov 16, in class** | Part 1: fork this repo, run the game, make your first commit. Then start Step 1 together. |
 | **Wed Nov 18, 11:59 PM** | Checkpoint 1: Steps 1–3 pushed (MenuItem, Drink, Food, Menu). |
 | **Fri Nov 20, 11:59 PM** | Checkpoint 2: Steps 4–5 pushed (Order, CoffeeShop). |
 | **Mon Nov 23, 2:00 PM (before class)** | **Everything is due:** Steps 6–7 and all the Challenges. At 2:00 PM I grade what is on GitHub. Work pushed later does not count. |
@@ -27,7 +28,7 @@ Tue–Sun this week is on your own. Message me on Canvas any time you are stuck.
 
 | Piece | Time |
 |---|---|
-| Part 1: new project + GitHub (Monday, in class) | 1 hour |
+| Part 1: fork, set up, first commit (Monday, in class) | 1 hour |
 | Refresh videos (watch the ones you need) | 1 to 2 hours |
 | Part 2, Steps 1–3: the item classes and the menu | 1.5 hours |
 | Part 2, Steps 4–5: orders and the shop | 1.5 hours |
@@ -88,7 +89,7 @@ Added. Your order has 1 items.
 
 **The plan for every class is in [UML.md](UML.md).** UML is a standard way to draw classes as
 boxes. Open UML.md now and look at the picture. You will build those 7 boxes, one step at a
-time.
+time. Each box already has its own empty file in `src/main/java/coffeeshop/`.
 
 ---
 
@@ -125,130 +126,70 @@ times are close, not exact.
 
 ---
 
-## Part 1 · Start a brand-new project (Monday, in class)
+## Part 1 · Get set up (Monday, in class)
 
-Every time before this, you **forked** a repo that I made. Today you make the project
-yourself, from nothing. This is the skill the whole week is about.
+### 1. Fork this repo
 
-### 1. Make the project in IntelliJ
+A **fork** is your own copy of the class repo on GitHub. I grade what is in your fork.
 
-1. In IntelliJ: **File → New → Project**. (On the Welcome screen, click **New Project**.)
-2. On the left, pick **Java**.
-3. Fill in the box like this:
-
-   | Box | Type or pick |
-   |---|---|
-   | Name | `coffee-shop` |
-   | Location | A folder that is **not** inside another project, like `Documents/csci121` |
-   | ☑ Create Git repository | **Check it.** IntelliJ starts Git for you. |
-   | Build system | **Maven** |
-   | JDK | **21** (the one you used all semester) |
-   | ☐ Add sample code | **Uncheck it.** You start from nothing. |
-   | Advanced Settings → GroupId | `edu.desu.cis` |
-   | Advanced Settings → ArtifactId | `coffee-shop` |
-
-4. Click **Create**. Wait until the progress bar at the bottom is gone.
-
-✅ **Check:** on the left you see `coffee-shop`, then `src`, then `main/java` and
-`test/java`, and a file called `pom.xml`.
-
-### 2. Make the `coffeeshop` package
-
-A **package** is a folder for your classes. All 7 classes go in one package.
-
-1. Right-click `src/main/java` → **New → Package** → type `coffeeshop` → Enter.
-2. Right-click `src/test/java` → **New → Package** → type `coffeeshop` → Enter.
-   This is where the check tests go.
-
-✅ **Check:** you see a `coffeeshop` folder under `main/java` **and** under `test/java`.
-
-### 3. Add JUnit, so the check tests can run
-
-**JUnit** is the tool that runs tests. Your `pom.xml` is the file that tells Maven which
-tools your project needs. Right now it lists none.
-
-1. Open `pom.xml`.
-2. Find the last line, `</project>`.
-3. Paste this **right above** `</project>`:
-
-   ```xml
-       <dependencies>
-           <dependency>
-               <groupId>org.junit.jupiter</groupId>
-               <artifactId>junit-jupiter</artifactId>
-               <version>5.10.0</version>
-               <scope>test</scope>
-           </dependency>
-       </dependencies>
-   ```
-
-4. A small **Maven** button with a ↻ shows up at the top right of the file. Click it. (It means
-   "Load Maven Changes.")
-
-✅ **Check:** the file has no red text, and the ↻ button went away.
-
-### 4. Your first program and your first test
-
-1. Right-click the `coffeeshop` package under `main/java` → **New → Java Class** → `MenuItem`.
-2. Leave it empty for now. It looks like this:
-
-   ```java
-   package coffeeshop;
-
-   public class MenuItem {
-   }
-   ```
-
-3. Copy `check/coffeeshop/MenuItemTest.java` **from this repo** into the `coffeeshop` package
-   under `test/java` in your new project. (Open the file on GitHub, click the copy button, then
-   in IntelliJ right-click the test `coffeeshop` package → **New → Java Class** → `MenuItemTest`,
-   select everything and paste.)
-
-✅ **Check:** `MenuItemTest` is full of red. **That is right.** The test is looking for methods
-you have not written yet. They turn green in Step 1.
-
-### 5. Put it on GitHub
-
-1. In IntelliJ: **Git → GitHub → Share Project on GitHub**.
-   (If you do not see a **Git** menu, try **VCS → Share Project on GitHub**.)
-2. Repository name: `coffee-shop`. ☑ **Private**. Remote: `origin`.
-3. Click **Share**. If it asks you to log in to GitHub, do it.
-4. It asks which files to add. Leave them all checked. Commit message:
-   `setup: new project with JUnit`. Click **Add**.
-
-✅ **Check:** go to github.com, open your repos, and open `coffee-shop`. You see `pom.xml`
-and `src`.
-
-### 6. Let me see it
-
-Your repo is private, so only you can see it. Add me:
-
-1. On GitHub, open `coffee-shop` → **Settings** → **Collaborators** → **Add people**.
-2. Type `code-rhino` and click **Add**.
-3. Copy the link to your repo (it looks like `https://github.com/your-name/coffee-shop`) and
-   paste it into the **Week 13 Project** assignment on Canvas.
-
-✅ **Check:** the Collaborators page shows `code-rhino` as **Pending** or added.
-
-> **What did IntelliJ just do for you?** The same thing as these terminal commands:
-> `git init` (start Git in this folder), `git add .` and `git commit` (save a snapshot),
-> then make a repo on GitHub, `git remote add origin <link>` (connect the two), and
-> `git push -u origin main` (send it up). You will make new projects for the rest of your
-> life. Now you know both ways.
-
-### 7. Fork this repo too (for the Challenges)
-
-Like every Follow-Along repo:
-
-1. Go to **github.com/DSU-CSCI-121-F26/Week13-CoffeeShop**. Click **Fork**, then **Create fork**.
+1. Go to **[github.com/DSU-CSCI-121-F26/Week13-CoffeeShop](https://github.com/DSU-CSCI-121-F26/Week13-CoffeeShop)**.
+   Click **Fork**, then **Create fork**.
 2. On your fork, click the **Actions** tab, then **I understand my workflows, go ahead and enable them**.
-3. In IntelliJ: **File → New → Project from Version Control** → paste the link to **your fork**
-   → **Clone** → **Trust Project**.
 
-Do not clone it inside your `coffee-shop` folder. They are two separate projects.
+✅ **Check:** the top of the page says `your-username / Week13-CoffeeShop`.
 
-✅ **Check:** you have two IntelliJ projects: `coffee-shop` (yours, from nothing) and
-`Week13-CoffeeShop` (the fork, with this README and the Challenges).
+### 2. Open it in IntelliJ
+
+1. In IntelliJ: **File → New → Project from Version Control**.
+2. Paste the link to **your fork** (it has your username in it) → **Clone** → **Trust Project**.
+3. Wait until the progress bar at the bottom of IntelliJ is gone.
+
+Do not clone it inside the folder of another project. If your terminal is in an old project
+folder, type `cd ..` first.
+
+✅ **Check:** on the left you see `src/main/java`, with two packages inside: `coffeeshop` and
+`challenges`.
+
+### 3. Look around
+
+| Folder or file | What is in it |
+|---|---|
+| `src/main/java/coffeeshop/` | **Your project.** 7 files, one per class. Each one is empty except for a comment that says which step it is and what to build. |
+| `src/main/java/challenges/` | **The Challenges.** 4 files of short problems (Part 3). |
+| `UML.md` | **The plan.** A picture of all 7 classes, and a table for each one. |
+| `check/coffeeshop/` | **The check tests.** One per step. You drag each one in when you start that step. |
+| `src/test/java/coffeeshop/` | Where you drag the check tests. Empty for now. |
+| `src/test/java/challenges/` | The tests for the Challenges. They are ready to run. |
+
+### 4. Run the game
+
+1. Open `src/main/java/coffeeshop/CoffeeShopApp.java`.
+2. Find the line `public static void main(String[] args) {`.
+3. Click the green ▶ next to it, then **Run**.
+
+✅ **Check:** the Run window at the bottom says:
+
+```
+Hornet Coffee is not open yet.
+Build Steps 1 to 5, then write the game loop here in Step 6.
+```
+
+That is your game right now. By Step 6, it will be the full coffee shop at the top of this page.
+
+Look at the rest of `CoffeeShopApp.java`. Two methods are marked **GIVEN CODE**: `readNumber`
+and `readText`. They read what the user types. You will use them in Step 6. Do not change them.
+
+### 5. Make your first commit
+
+1. Open `CoffeeShopApp.java`. Find the comment block at the top.
+2. Add one line at the very top of that comment, with your name, like this: `// Built by: Sam Lee`
+3. **Git → Commit**. Check the file. Message: `setup: my name`. Click **Commit and Push**.
+
+✅ **Check:** open your fork on GitHub, click the commit count, and see `setup: my name`.
+
+> **Commit and push in IntelliJ, every time:** **Git → Commit**, check your files, type the
+> message, then click **Commit and Push**. Then open your fork on GitHub and check that the commit
+> is there. If it is only on your laptop, I can not see it.
 
 ---
 
@@ -256,14 +197,17 @@ Do not clone it inside your `coffee-shop` folder. They are two separate projects
 
 Every step works the same way:
 
-1. **Read** that class in [UML.md](UML.md). It tells you every field and method, and what each one does.
-2. **Write** the class in your `coffeeshop` package.
-3. **Copy** that step's test from `check/coffeeshop/` into your test `coffeeshop` package.
-4. **Run** the test (the green ▶ next to the class name). Fix things until it is all green.
-5. **Commit and push** with the exact message given.
+1. **Open** that step's file in `src/main/java/coffeeshop/`. The comment at the top says what to build.
+2. **Read** that class in [UML.md](UML.md). It tells you every field and method, and what each one does.
+3. **Write** the class, where it says `// YOUR CODE`.
+4. **Drag** that step's test from `check/coffeeshop/` into `src/test/java/coffeeshop/`. (In
+   IntelliJ, drag the file in the project panel on the left, then click **Refactor** or **OK**.)
+5. **Run** the test (the green ▶ next to the class name). Fix things until it is all green.
+6. **Commit and push** with the exact message given.
 
-> **Commit and push in IntelliJ:** **Git → Commit**, check your files, type the message,
-> then click **Commit and Push**. Then open your repo on GitHub and check that the commit is there.
+> ⚠️ **Drag a test in only when you start its step.** A test that looks for a method you have
+> not written yet turns the whole test folder red. Then no test can run, not even the Challenges.
+> If that happens, drag the test back into `check/coffeeshop/` for now.
 
 ### Rules for every class
 
@@ -290,7 +234,8 @@ Use `getPrice()` there, **not** `price`. In Step 2 you will see why: a Drink cha
 
 ### Step 2 · `Drink` and `Food`
 
-Both start with `extends MenuItem`. Both constructors start with `super(name, price);`.
+First change each class line to `public class Drink extends MenuItem {` and
+`public class Food extends MenuItem {`. Both constructors start with `super(name, price);`.
 Both **override** `getPrice()`. Put `@Override` on the line above each method you override.
 
 Inside an override, `super.getPrice()` gives you `MenuItem`'s price, before the upcharge.
@@ -380,38 +325,20 @@ print "Shop closed. Goodbye!"
 **The program must never end by itself.** Only `0` ends it. Wrong numbers and letters must
 **not** end it or crash it.
 
-**Given code.** Copy these two methods into `CoffeeShopApp` exactly. Use them for **all**
-input. `readNumber` keeps asking until the user types a whole number, so letters can not crash
-your game.
+**Already done for you** in `CoffeeShopApp.java`: `main`, the `input` field, the
+constructor's first line, and the two **GIVEN CODE** methods, `readNumber` and `readText`.
+Use them for **all** input. `readNumber` keeps asking until the user types a whole number, so
+letters can not crash your game.
 
-```java
-// Keeps asking until the user types a whole number.
-private int readNumber(String prompt) {
-    System.out.print(prompt);
-    while (!input.hasNextInt()) {
-        input.nextLine();                    // throw away what they typed
-        System.out.print("Please type a number: ");
-    }
-    int number = input.nextInt();
-    input.nextLine();                        // throw away the Enter key
-    return number;
-}
+**What you add:**
 
-// Reads one line of text, with the spaces at the ends cut off.
-private String readText(String prompt) {
-    System.out.print(prompt);
-    return input.nextLine().trim();
-}
-```
+1. The fields `shop` and `order`, and two lines in the constructor that make them:
+   `new CoffeeShop("Hornet Coffee")` and `new Order()`.
+2. `run()`: replace the two "not open yet" lines with the game loop above.
+3. `printBanner()`, `printMainMenu()`, and one `private` method for each choice:
+   `addItem()`, `removeItem()`, `viewOrder()`, `useCoupon()`, `checkout()`.
 
-**`main` is short.** All the work is in `run()`:
-
-```java
-public static void main(String[] args) {
-    CoffeeShopApp app = new CoffeeShopApp(new Scanner(System.in));
-    app.run();
-}
-```
+`main` stays the way it is. All the work happens in `run()`.
 
 **What each choice does.** The test checks the sentences in **bold**, so type them exactly.
 
@@ -442,26 +369,25 @@ use `'S'`.
 
 ### Step 7 · Finish like a pro
 
-1. **README.** In your `coffee-shop` project, right-click the top `coffee-shop` folder →
-   **New → File** → `README.md`. Write:
+1. **About your shop.** Right-click the top `Week13-CoffeeShop` folder → **New → File** →
+   `MY-SHOP.md`. Write:
    - one sentence on what the program is,
    - how to run it (which file, which button),
    - the 7 classes, with one sentence each on what they do, in your own words,
    - one thing that was hard and how you fixed it.
 2. **Comments.** Check that every method in every class has a `//` comment above it.
-3. **Run every test one last time.** Right-click the test `coffeeshop` package → **Run 'Tests in
-   coffeeshop'**. All green?
+3. **Run every test one last time.** Right-click `src/test/java` → **Run 'All Tests'**. All green?
 
-- **Commit:** `step 7: README and comments`
+- **Commit:** `step 7: MY-SHOP and comments`
 
-✅ **Check:** your repo on GitHub shows your README on the front page, and the commit list has at
-least **8 commits**, from `setup` to `step 7`.
+✅ **Check:** your fork on GitHub has `MY-SHOP.md`, and the commit list shows `setup`, then
+`step 1` to `step 7`.
 
 ---
 
 ## Part 3 · The Challenges
 
-These are in **your fork of this repo**, in `src/main/java/challenges/`. They work the same way
+These are in `src/main/java/challenges/`, in the same fork. They work the same way
 as the Challenge section of every Follow-Along part: fill in each method, run its test, get it
 green. You do not change the test files.
 
@@ -494,13 +420,12 @@ Commit after each section, with these exact messages:
 
 Before **Mon Nov 23, 2:00 PM**, when class starts:
 
-- [ ] `coffee-shop` is on GitHub, private, with `code-rhino` added as a collaborator.
-- [ ] The link to `coffee-shop` is in the Canvas assignment.
-- [ ] `coffee-shop` has at least 8 commits: `setup`, `step 1` … `step 7`.
-- [ ] All 7 check tests are green in `coffee-shop`.
+- [ ] Your fork has the `setup` commit and `step 1` to `step 7`.
+- [ ] All 7 check tests are in `src/test/java/coffeeshop/`, and they are all green.
 - [ ] The game runs, and only `0` ends it.
-- [ ] Your fork of `Week13-CoffeeShop` has the 4 challenge commits, pushed.
-- [ ] You opened both repos on GitHub and saw your latest commits there.
+- [ ] `MY-SHOP.md` is in your fork.
+- [ ] The 4 challenge commits are there, and the Challenge tests are green.
+- [ ] You opened your fork on GitHub and saw your latest commits there.
 
 If it is only on your laptop, I can not see it.
 
@@ -508,10 +433,10 @@ If it is only on your laptop, I can not see it.
 
 | Part | Points | How I check it |
 |---|---|---|
-| Setup: new project, JUnit, on GitHub, at least 8 step commits | 10 | Your repo and its commit list |
+| Setup and step commits: `setup`, then `step 1` to `step 7` | 10 | Your fork's commit list |
 | Steps 1–5: the classes | 35 | The check tests, run on your code |
 | Step 6: the game loop | 15 | `CoffeeShopAppTest`, and I play your game |
-| Step 7: README and comments | 10 | I read them |
+| Step 7: `MY-SHOP.md` and comments | 10 | I read them |
 | Challenges A–D | 30 | 7.5 points per section, by how many of its tests pass |
 
 **One commit with everything in it** at the end tells me you did not build it step by step.

@@ -268,5 +268,5 @@ sentences the test looks for.
 | `+run() void` | **The game loop.** Prints the banner once. Then, again and again: print the main menu, read a number, do that choice. It stops **only** when the user picks `0`. Then it prints `Shop closed. Goodbye!` |
 | `-printBanner()`, `-printMainMenu()` | Print the art and the menu screen. |
 | `-addItem()`, `-removeItem()`, `-viewOrder()`, `-useCoupon()`, `-checkout()` | One method for each menu choice. `checkout()` starts a `new Order()` when it is done. |
-| `-readNumber(String prompt) int`, `-readText(String prompt) String` | **Given code.** Copy them from the README. |
+| `-readNumber(String prompt) int`, `-readText(String prompt) String` | **Given code.** They are already in `CoffeeShopApp.java`. Do not change them. |
 | `+main(String[] args)` | **static.** Makes `new CoffeeShopApp(new Scanner(System.in))` and calls `run()`. |

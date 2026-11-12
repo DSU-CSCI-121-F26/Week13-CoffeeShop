@@ -10,13 +10,14 @@
   <name>Week13-CoffeeShop</name>
 
   <!--
-    Week 13 hand-out. This repo holds the instructions (README.md), the class diagram
-    (UML.md), the check tests students copy into their own coffee-shop project (check/),
-    and the Challenge problems (src/main/java/challenges), each checked by a JUnit 5 test
-    in src/test/java/challenges. Students run tests in IntelliJ with the green arrow.
+    Week 13 hand-out. Students fork this repo and build the Hornet Coffee project in
+    src/main/java/coffeeshop (7 starter files, one per class in UML.md; CoffeeShopApp has a
+    main that already runs). At each step they drag that step's test from check/coffeeshop
+    into src/test/java/coffeeshop. The tests stay out of src/test until then, because a test
+    that names a missing method would stop every test from compiling.
 
-    The Coffee Shop itself is NOT in this repo. Students build it in a brand-new project
-    they create themselves. That is the point of the week.
+    The Challenges are in src/main/java/challenges, each checked by a JUnit 5 test in
+    src/test/java/challenges. Students run everything in IntelliJ with the green arrow.
 
     The Maven wrapper (mvnw) is here for the GitHub check, not for students.
   -->
