@@ -15,6 +15,8 @@ import java.util.Scanner;
 // Then drag check/coffeeshop/CoffeeShopAppTest.java into src/test/java/coffeeshop/ and run it.
 // Commit message:  step 6: game loop
 
+// Built by Skye Pepp
+
 public class CoffeeShopApp {
 
     private Scanner input;
