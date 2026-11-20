@@ -13,8 +13,36 @@ package coffeeshop;
 // Then drag check/coffeeshop/FoodTest.java into src/test/java/coffeeshop/ and run it.
 // Commit message (after Drink is green too):  step 2: Drink and Food
 
-public class Food {
+public class Food extends MenuItem {
+    public static final double HEAT_FEE = 0.50;
 
-    // YOUR CODE
+    private boolean heated;
 
+    public Food(String name, double price, boolean heated) {
+        super(name, price);
+        this.heated = heated;
+    }
+
+    public boolean isHeated() {
+        return heated;
+    }
+
+    @Override
+    public double getPrice() {
+        if (heated) {
+            return super.getPrice() + HEAT_FEE;
+        }
+
+        return super.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        if (heated) {
+            return getName() + ", heated – $"
+                    + String.format("%.2f", getPrice());
+        }
+
+        return super.toString();
+    }
 }
