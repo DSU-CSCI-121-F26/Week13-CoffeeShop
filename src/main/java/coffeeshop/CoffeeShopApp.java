@@ -13,6 +13,7 @@ import java.util.Scanner;
 //   printBanner(), printMainMenu(), and one method for each menu choice
 //
 // Then drag check/coffeeshop/CoffeeShopAppTest.java into src/test/java/coffeeshop/ and run it.
+//Build By Lu-kee Tucker
 // Commit message:  step 6: game loop
 
 public class CoffeeShopApp {
