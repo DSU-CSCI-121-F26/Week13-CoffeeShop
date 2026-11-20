@@ -8,10 +8,34 @@ package coffeeshop;
 //   4 methods:         getName(), getPrice(), isDrink(), toString()
 //
 // Then drag check/coffeeshop/MenuItemTest.java into src/test/java/coffeeshop/ and run it.
-// Commit message when it is all green:  step 1: MenuItem
+// Commit message when it is all green:  step 1: MenuItem.
 
 public class MenuItem {
 
-    // YOUR CODE
+    private String name;
+    private double price;
 
+    public MenuItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean isDrink() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return name + " – $" + String.format("%.2f", getPrice());
+    }
 }
+
+
