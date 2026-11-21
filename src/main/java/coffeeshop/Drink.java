@@ -24,7 +24,13 @@ public class Drink extends MenuItem {
     // Creates a drink with a name, price, and size.
     public Drink(String name, double price, char size) {
         super(name, price);
-        this.size = Character.toUpperCase(size);
+        char upper = Character.toUpperCase(size);
+
+        if (upper == 'S' || upper == 'M' || upper == 'L') {
+            this.size = upper;
+        } else {
+            this.size = 'S';
+        }
     }
 
     // Returns the size of the drink.
