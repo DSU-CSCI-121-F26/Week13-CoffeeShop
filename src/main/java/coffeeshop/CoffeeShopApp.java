@@ -20,6 +20,7 @@ public class CoffeeShopApp {
     private CoffeeShop shop;
     private Order order;
     private Scanner input;
+    private boolean alreadyApplied;
 
     // YOUR CODE (Step 6): add the fields shop and order here.
 
@@ -28,6 +29,7 @@ public class CoffeeShopApp {
         // YOUR CODE (Step 6): make the shop, new CoffeeShop("Hornet Coffee"), and the first new Order().
         shop = new CoffeeShop("Hornet Coffee");
         order = new Order();
+        alreadyApplied = false;
     }
 
     // The game loop. It keeps going until the user picks 0.
@@ -75,6 +77,10 @@ public class CoffeeShopApp {
                     System.out.println(shop.salesReport());
                     break;
 
+                case 8:
+                    applyForJob();
+                    break;
+
                 case 0:
                     running = false;
                     break;
@@ -100,6 +106,7 @@ public class CoffeeShopApp {
         System.out.println("5. Use coupon");
         System.out.println("6. Checkout");
         System.out.println("7. Today's sales");
+        System.out.println("8. Apply for a Job");
         System.out.println("0. Close the shop");
     }
 
@@ -203,6 +210,46 @@ public class CoffeeShopApp {
                 String.format("%.2f", total));
 
         order = new Order();
+    }
+    private void applyForJob() {
+        if (alreadyApplied) {
+            System.out.println(
+                    "You have already applied for a position. Please come back another time.");
+            return;
+        }
+
+        alreadyApplied = true;
+
+
+
+        System.out.println(
+                "Hello! My name is Marie and  I am the hiring manager at HornetCoffeeShop. Nice to Meet you!");
+
+        String name =
+                readText("What is your name? ");
+        System.out.println("Nice to meet you "+name+".");
+
+        int years =
+                readNumber("Years of experience? ");
+        System.out.println("Okay "+name+" So you have "+years+" of experience");
+
+        String answer =
+                readText("What is one important Java concept? ");
+
+        Applicant applicant =
+                new Applicant(name, years, answer);
+
+        HiringManager manager =
+                new HiringManager();
+
+        if (manager.hire(applicant)) {
+            System.out.println(
+                    "Congratulations " + name +
+                            " You are hired!");
+        } else {
+            System.out.println(
+                    "Thank you for applying. "+name+" But Unfortunately we are moving forward on the applicatioon process.");
+        }
     }
 
     // Start here. Click the green arrow next to this line to run the game.
