@@ -218,6 +218,7 @@ public class CoffeeShopApp {
             return;
         }
 
+
         alreadyApplied = true;
 
 
@@ -242,13 +243,36 @@ public class CoffeeShopApp {
         HiringManager manager =
                 new HiringManager();
 
-        if (manager.hire(applicant)) {
+
+        int score = manager.hire(applicant);
+        if (score >= 80) {
+
+            System.out.println(
+                    "Wait a second...");
+
+            System.out.println(
+                    "Marie looks at your resume again.");
+
+            System.out.println(
+                    "You are overqualified for this position.");
+
             System.out.println(
                     "Congratulations " + name +
-                            " You are hired!");
-        } else {
+                            "! You are now the CEO of Hornet Coffee!");
+
+        }
+        else if (score >= 50) {
+
             System.out.println(
-                    "Thank you for applying. "+name+" But Unfortunately we are moving forward on the applicatioon process.");
+                    "Congratulations " + name +
+                            "! You are hired!");
+
+        }
+        else {
+
+            System.out.println(
+                    "Thank you for applying, " + name +
+                            ". Unfortunately, we will not be moving you forward in the hiring process at this time.");
         }
     }
 
