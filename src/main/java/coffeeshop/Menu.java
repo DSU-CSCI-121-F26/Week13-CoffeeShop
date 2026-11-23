@@ -13,7 +13,22 @@ import java.util.ArrayList;
 // Commit message:  step 3: Menu
 
 public class Menu {
+    // YOUR CODE //the item method below gathers the name and price of the item picked
+    private ArrayList<MenuItem> items;
+        public Menu() {
+            items = new ArrayList<MenuItem>();
+        }
+        public int size() {
+            return items.size();
+        }
+        public MenuItem getItem (int number){
+            return items.get(number);
+        }
 
-    // YOUR CODE
+        @Override
+        public String toString() {
+            return items.toString();
+        }
 
-}
+    }
+
