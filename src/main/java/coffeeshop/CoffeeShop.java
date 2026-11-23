@@ -14,7 +14,64 @@ import java.util.ArrayList;
 // Commit message:  step 5: CoffeeShop
 
 public class CoffeeShop {
+    private String name;
+    private Menu menu;
+    private ArrayList<Order> completedOrders;
+    private double totalSales;
 
+    public CoffeeShop(String name) {
+        this.name = name;
+        menu = new Menu();
+        completedOrders = new ArrayList<>();
+        totalSales = 0.0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public double checkout(Order order, int tipPercent) {
+
+        if(order.isEmpty()){
+            return 0.0;
+        }
+        double total = order.getTotal(tipPercent);
+
+        completedOrders.add(order);
+        totalSales += total;
+
+        return total;
+    }
+
+    public int getOrdersCompleted() {
+        return completedOrders.size();
+    }
+
+    public double getTotalSales() {
+        return totalSales;
+    }
+
+    public int getItemsSold() {
+
+        int count = 0;
+
+        for (Order order : completedOrders) {
+            count += order.getItemCount();
+        }
+
+        return count;
+    }
+
+    public String salesReport() {
+        return name
+                + "\nOrders: " + getOrdersCompleted()
+                + "\nItems sold: " + getItemsSold()
+                + "\nTotal: $" + String.format("%.2f", totalSales);
+    }
 
 
 }
